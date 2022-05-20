@@ -6,12 +6,14 @@ const DataProvider = (props) => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    const todoStore = JSON.parse(sessionStorage.getItem("todoStore"));
+    const todoStore = JSON.parse(localStorage.getItem("todoStore"));
     if(todoStore) setTodos(todoStore)
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem("todoStore", JSON.stringify(todos));
+    if(todos.length > 0){
+    localStorage.setItem("todoStore", JSON.stringify(todos));
+    }
   }, [todos]);
 
   return (

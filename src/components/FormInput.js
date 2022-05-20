@@ -7,8 +7,9 @@ function FormInput(props) {
 
   const addTodo=(e)=> {
       e.preventDefault();
-      setTodos([...todos, {name : todoName , complete : false}])
+        setTodos([...todos, {name : todoName , complete : false}])
       setTodoName('')
+      
   }
 
   return (
