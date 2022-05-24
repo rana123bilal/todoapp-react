@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
 import { DataContext } from "./DataProvider";
+import './todoList.css'
+
 
 function FormInput(props) {
   const [todos, setTodos] = useContext(DataContext); 
@@ -7,7 +9,7 @@ function FormInput(props) {
 
   const addTodo=(e)=> {
       e.preventDefault();
-        setTodos([...todos, {name : todoName , complete : false}])
+        setTodos([...todos, {name : todoName , complete : false , creationDate : new Date()}])
       setTodoName('')
       
   }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './registerForm.css';
 
 function Register(props) {
   const [registeredData, setRegisteredData] = useState({
@@ -7,6 +8,8 @@ function Register(props) {
     phoneno: "",
     password: "",
   });
+  const [formIsValid, setFormIsValid] = useState(false);
+
 
   const onEmailHandler = (event) => {
     setRegisteredData({ ...registeredData, email: event.target.value });
@@ -21,41 +24,48 @@ function Register(props) {
     setRegisteredData({ ...registeredData, password: event.target.value });
   };
 
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(registeredData);
-    props.setShowRegister(false)
-    props.setShowLogin(true);
+    if(registeredData.password.length > 6){
+      props.setShowRegister(false)   
+        props.setShowLogin(true);
+    }else{
+      setFormIsValid(true)
+    }
+ 
+    
   };
 
   return (
-    <>
+    <div className="register-form">
+      {formIsValid && <p>Please Enter Strong Password</p>}
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Email
+          <span>Email</span>
           <input type="email" onChange={onEmailHandler} />
         </label>
         <label>
-          {" "}
-          Username
+          <span>Name</span>
           <input type="text" onChange={onUsernameHandler} />
         </label>
         <label>
           {" "}
-          Phone number
+          <span>Phone number</span>
           <input type="number" onChange={onPhoneNoHandler} />
         </label>
         <label>
           {" "}
-          Password
+          <span>Password</span>
           <input type="password" onChange={onPasswordHandler} />
         </label>
         <button className="registerbutton" type="submit">
-          Register
+          <span>Register</span>
         </button>
       </form>
-    </>
+    </div>
   );
 }
 

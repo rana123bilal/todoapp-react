@@ -1,4 +1,5 @@
 import {useState} from "react";
+import './todoList.css'
 
 const ListItem = ({todo , id, checkComplete, handleEditTodos}) => {
   const [onEdit, setOnEdit] = useState(false)
@@ -28,9 +29,9 @@ const ListItem = ({todo , id, checkComplete, handleEditTodos}) => {
     );
   }else{
     return (
-      <div>
-        <li>
-          <label htmlFor={id} className={todo.complete ? 'active' : ''}>
+      <div className={todo.complete ? 'active' : ''}>
+        <li >
+          <label htmlFor={id} >
             <input type="checkbox" id={id} checked={todo.complete}
             onChange={() => checkComplete(id)} />
             {todo.name}

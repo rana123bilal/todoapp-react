@@ -1,6 +1,5 @@
 import "./App.css";
 import { useState } from "react";
-import Footer from "./components/Footer";
 import FormInput from "./components/FormInput";
 import List from "./components/List";
 import DataProvider from "./components/DataProvider";
@@ -11,7 +10,6 @@ function App() {
   const [showRegister, setShowRegister] = useState(true);
   const [showLogin, setShowLogin] = useState(false);
   const [showTodoList, setShowTodoList] = useState(false)
-console.log('showRegister', showRegister)
 
   return (
     <>
@@ -22,7 +20,6 @@ console.log('showRegister', showRegister)
           <h1>Todo List</h1>
           <FormInput />
           <List />
-          <Footer />
         </div>}
       </DataProvider>
     </>
